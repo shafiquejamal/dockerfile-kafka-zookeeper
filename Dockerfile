@@ -11,8 +11,7 @@ RUN apk add --no-cache wget bash tar \
     && echo "alias ll=\"ls -al --color=auto\"" > ~/.profile \
     && echo "PS1=\"[\[\033[32m\]\w]\[\033[0m\]\n\[\033[1;36m\]\u\[\033[1;33m\]@\[\033[1;36m\]\h\[\033[1;33m\] \$(/usr/bin/tty | /bin/sed -e 's:/dev/::') -> \[\033[0m\]\"" >> ~/.profile && chmod a+rwx ~/.profile \
     && mkdir /opt/kafka \
-    && wget -qO- http://www-us.apache.org/dist/kafka/1.1.0/kafka_2.11-1.1.0.tgz | tar -xzC /opt/kafka --strip-components=1 \
-    && mkdir /tmp/kafka 
+    && wget -qO- http://www-us.apache.org/dist/kafka/1.1.0/kafka_2.11-1.1.0.tgz | tar -xzC /opt/kafka --strip-components=1 
 
 
 
@@ -27,5 +26,5 @@ EXPOSE 2181 2888 3888
 VOLUME ["/opt/zookeeper/conf", "/tmp/zookeeper"]
 
 # ENTRYPOINT ["/opt/zookeeper/bin/zkServer.sh"]
-CMD /opt/zookeeper/bin/zkServer.sh start && /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties
+CMD /opt/zookeeper/bin/zkServer.sh start && /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties 
 
